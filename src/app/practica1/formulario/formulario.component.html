@@ -1,0 +1,74 @@
+<h1>Por favor, rellena todos los campos</h1>
+
+<form class="col-10" #form="ngForm">
+  <div class="form-row">
+    <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="nombre" required minlength="4" name="nombre" #n="ngModel">
+    <div *ngIf="n.invalid && (n.dirty || n.touched)"
+    class="alert alert-danger">
+      <div *ngIf="n.errors.required">
+        El nombre es requerido.
+      </div>
+      <div *ngIf="n.errors.minlength">
+        El nombre debe ser de mínimo 4 caractéres.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <input type="text" class="form-control" placeholder="Apellidos" [(ngModel)]="apellidos" required minlength="4" name="apellidos" #a="ngModel">
+    <div *ngIf="a.invalid && (a.dirty || a.touched)"
+    class="alert alert-danger">
+      <div *ngIf="a.errors.required">
+        Los apellidos son requeridos.
+      </div>
+      <div *ngIf="a.errors.minlength">
+        Los apellidos deben ser de mínimo 4 caractéres.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <input type="mail" class="form-control" placeholder="Correo" [(ngModel)]="correo" required minlength="4" email name="correo" #c="ngModel">
+    <div *ngIf="c.invalid && (c.dirty || c.touched)"
+    class="alert alert-danger">
+      <div *ngIf="c.errors.required">
+        El correo es requerido.
+      </div>
+      <div *ngIf="c.errors.minlength">
+        El nombre debe ser de mínimo 4 caractéres y un correo válido.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <input type="mail" class="form-control" placeholder="Telefono" [(ngModel)]="telefono" required minlength="4" name="telefono" #t="ngModel">
+    <div *ngIf="t.invalid && (t.dirty || t.touched)"
+    class="alert alert-danger">
+      <div *ngIf="t.errors.required">
+        El teléfono es requerido.
+      </div>
+      <div *ngIf="t.errors.minlength">
+        El teléfono debe ser un teléfono válido.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <input type="text" class="form-control" placeholder="Edad" [(ngModel)]="edad" required minlength="2" inputmode="numeric" pattern="[0-9]*" digitOnly maxlength="3" name="edad" #e="ngModel">
+    <div *ngIf="e.invalid && (e.dirty || e.touched)"
+    class="alert alert-danger">
+      <div *ngIf="e.errors.required">
+        La edad es requerida.
+      </div>
+      <div *ngIf="e.errors.minlength">
+        Debe ser una edad válida.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <span>Sexo</span>
+    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="sexo" required name="sexo">
+      <option value="M">Masculino</option>
+      <option value="F">Femenino</option>
+    </select>
+    <div class="col-auto my-1">
+      <button type="btn" class="btn btn-primary" (click)="agregarUsuario()" [disabled]="!form.form.valid" >Agregar</button>
+    </div>
+  </div>
+</form>
